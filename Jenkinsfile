@@ -5,7 +5,7 @@ pipeline {
 
     environment {
       CHROME_BIN = '/bin/google-chrome'
-      CYPRESS_CACHE_FOLDER: '$/var/lib/jenkins/cache/Cypress'
+      CYPRESS_CACHE_FOLDER = '/var/lib/jenkins/cache/Cypress'
    
     }
   
