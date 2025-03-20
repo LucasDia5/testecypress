@@ -17,7 +17,7 @@ pipeline {
         }
       stage('Tests') {
             steps {
-                sh 'npm run cypress:ci'
+                sh 'npx cypress run'
             }
         }  
       stage('Deploy') {
