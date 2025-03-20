@@ -5,7 +5,7 @@ pipeline {
 
     environment {
       CHROME_BIN = '/bin/google-chrome'
-      CYPRESS_CACHE_FOLDER = '/var/lib/jenkins/cache/Cypress'
+      CYPRESS_CACHE_FOLDER = '/var/lib/jenkins/cache/Cypress/13.17.0/Cypress/Cypress'
    
     }
   
@@ -13,7 +13,7 @@ pipeline {
       stage('Dependencies') {
           steps {
               sh 'npm i'
-              sh 'npm install cypress'
+              sh 'npm install cypress --save-dev'
 
             }
         }
