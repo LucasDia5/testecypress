@@ -6,7 +6,8 @@ pipeline {
     }
 
     environment {
-      NODE_OPTIONS = "--max_old_space_size=4096"   
+      NODE_OPTIONS = "--max_old_space_size=4096"  
+      CYPRESS_CACHE_FOLDER = "/var/lib/jenkins/cypress_cache"
     }
   
     stages {
