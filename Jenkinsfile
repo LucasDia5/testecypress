@@ -1,31 +1,50 @@
 pipeline {
     agent any
-    
-    tools {nodejs "Node"}
+
+    options {
+        ansiColor('xterm') 
+    }
 
     environment {
-      CHROME_BIN = '/bin/google-chrome'
-      CYPRESS_CACHE_FOLDER = '/var/lib/jenkins/cache/Cypress/13.17.0/Cypress/Cypress'
-   
+      NODE_OPTIONS = "--max_old_space_size=4096"   
     }
   
     stages {
-      stage('Dependencies') {
-          steps {
-              sh 'npm i'
-              sh 'npm install cypress --save-dev'
-
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/LucasDia5/testecypress'
             }
         }
-      stage('Tests') {
+        
+      stage('Install Dependencies') {
+          steps {
+             script {
+                    if (fileExists('package.json')) {
+                        sh 'npm install'
+                    } else {
+                        error "Arquivo package.json não encontrado!"
+                    }
+                }
+            }
+        }
+        
+      stage('Run Cypress') {
             steps {
-                sh 'npx cypress run'
+                sh 'npx cypress run --spec "cypress/e2e/spec.cy.js"'
             }
         }  
-      stage('Deploy') {
-          steps {
-              echo 'Deploying....'
-          }
+
+    stage('Gerar Relatorios') {
+            steps {
+                publishHTML(target: [
+                    allowMissing: false,
+                    alwaysLinkToLastBuild: true,
+                    keepAll: true,
+                    reportDir: 'cypress/reports/html',
+                    reportFiles: 'index.html',
+                    reportName: 'Cypress Test Report'
+                ])
+            }
         }
      }
 }
