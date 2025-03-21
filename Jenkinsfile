@@ -20,8 +20,8 @@ pipeline {
           steps {
              script {
                     if (fileExists('package.json')) {
-                        sh 'npm install'
-                        sh 'npm install cypress --force'
+                        sh 'npx cypress cache clear'
+                        sh 'npx cypress install'
                     } else {
                         error "Arquivo package.json não encontrado!"
                     }
