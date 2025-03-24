@@ -25,7 +25,7 @@ pipeline {
              script {
                     if (fileExists('package.json')) {
                         sh 'npx cypress cache clear'
-                        sh 'rm -rf node_modules package-lock.json'
+                        //sh 'rm -rf node_modules package-lock.json'
                         sh 'npm i'
                         sh 'npx cypress install'
 
