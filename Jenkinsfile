@@ -9,6 +9,7 @@ pipeline {
       NODE_OPTIONS = "--max_old_space_size=4096"  
       HTTP_PROXY= "http://172.0.0.1"
       NPM_CONFIG_STRICT_SSL = 'false'
+      NODE_TLS_REJECT_UNAUTHORIZED = '0'
         
     }
   
