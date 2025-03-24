@@ -10,6 +10,9 @@ pipeline {
       HTTP_PROXY= "http://172.0.0.1"
       NPM_CONFIG_STRICT_SSL = 'false'
       NODE_TLS_REJECT_UNAUTHORIZED = '0'
+      CI = 'true'
+     CYPRESS_CACHE_FOLDER = "/var/lib/jenkins/.cache/Cypress"
+    
         
     }
   
