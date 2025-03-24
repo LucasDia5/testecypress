@@ -23,24 +23,13 @@ pipeline {
             }
         }
 
-    
-        stage('Verificacao') {
-            steps {
-               sh 'npx cypress verify'
-            }
-        }
-
 
     stage('Install Dependencies') {
           steps {
              script {
                     if (fileExists('package.json')) {
-                        sh 'npx cypress cache clear'
-                        //sh 'rm -rf node_modules package-lock.json'
-                        sh 'npm i'
-                        //sh 'npm install cypress --save-dev'
-                        sh 'npm install cypress@latest --save-dev'
-                        
+                        sh 'npm install'
+                        sh 'npx cypress install'                        
 
                     } else {
                         error "Arquivo package.json não encontrado!"
