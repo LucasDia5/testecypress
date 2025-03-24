@@ -24,11 +24,11 @@ pipeline {
           steps {
              script {
                     if (fileExists('package.json')) {
-                        //sh 'npx cypress cache clear'
-                        //sh 'npx cypress install'
-                        //sh 'npm install'
-                        sh 'npm init -y'
-                        sh 'npm install cypress --save-dev'
+                        sh 'npx cypress cache clear'
+                        sh 'rm -rf node_modules package-lock.json'
+                        sh 'npm install'
+                        sh 'npx cypress install'
+
                     } else {
                         error "Arquivo package.json não encontrado!"
                     }
