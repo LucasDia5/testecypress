@@ -19,6 +19,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/LucasDia5/testecypress'
             }
         }
+    }
 
 
     stages {
