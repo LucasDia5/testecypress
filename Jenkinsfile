@@ -23,7 +23,14 @@ pipeline {
             }
         }
 
+         stage('limpeza') {
+            steps {
+                sh 'rm -rf ~/.cache/Cypress'
+                sh 'npx cypress cache clear'
 
+            }
+        } 
+        
     stage('Install Dependencies') {
           steps {
              script {
