@@ -28,7 +28,9 @@ pipeline {
                sh 'npx cypress verify'
             }
         }
-      stage('Install Dependencies') {
+    }
+
+    stage('Install Dependencies') {
           steps {
              script {
                     if (fileExists('package.json')) {
