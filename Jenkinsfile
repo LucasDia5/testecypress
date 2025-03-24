@@ -20,15 +20,13 @@ pipeline {
             }
         }
     }
-
-
-    stages {
+    
         stage('Verificacao') {
             steps {
                sh 'npx cypress verify'
             }
         }
-    }
+
 
     stage('Install Dependencies') {
           steps {
