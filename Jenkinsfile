@@ -27,7 +27,9 @@ pipeline {
                         sh 'npx cypress cache clear'
                         //sh 'rm -rf node_modules package-lock.json'
                         sh 'npm i'
-                        sh 'npm install cypress --save-dev'
+                        //sh 'npm install cypress --save-dev'
+                        sh 'npm install cypress@latest --save-dev'
+                        
 
                     } else {
                         error "Arquivo package.json não encontrado!"
