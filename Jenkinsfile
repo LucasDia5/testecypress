@@ -23,8 +23,8 @@ pipeline {
                     if (fileExists('package.json')) {
                         //sh 'npx cypress cache clear'
                         //sh 'npx cypress install'
+                        //sh 'npm install'
                         sh 'rm -rf node_modules package-lock.json'
-                        sh 'npm install'
                         sh 'npx cypress install'
                     } else {
                         error "Arquivo package.json não encontrado!"
