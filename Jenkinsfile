@@ -11,8 +11,8 @@ pipeline {
       NPM_CONFIG_STRICT_SSL = 'false'
       NODE_TLS_REJECT_UNAUTHORIZED = '0'
       CI = 'true'
-     CYPRESS_CACHE_FOLDER = "/var/lib/jenkins/.cache/Cypress"
-        CYPRESS_RUN_BINARY = '/usr/local/bin/cypress'
+     //CYPRESS_CACHE_FOLDER = "/var/lib/jenkins/.cache/Cypress"
+        CYPRESS_RUN_BINARY = '/usr/local/bin/'
         
     }
   
