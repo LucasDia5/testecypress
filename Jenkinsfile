@@ -4,17 +4,6 @@ pipeline {
     options {
         ansiColor('xterm') 
     }
-
-    environment {
-      NODE_OPTIONS = "--max_old_space_size=4096"  
-      HTTP_PROXY= "http://172.0.0.1"
-      NPM_CONFIG_STRICT_SSL = 'false'
-      NODE_TLS_REJECT_UNAUTHORIZED = '0'
-      CI = 'true'
-     //CYPRESS_CACHE_FOLDER = "/var/lib/jenkins/.cache/Cypress"
-        //CYPRESS_RUN_BINARY = '/usr/local/bin/'
-        
-    }
   
     stages {
         stage('Checkout') {
@@ -22,23 +11,13 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/LucasDia5/testecypress'
             }
         }
-
-        /* stage('limpeza') {
-            steps {
-                sh 'rm -rf ~/.cache/Cypress'
-                sh 'npx cypress cache clear'
-
-            }
-        } */
-        
+       
     stage('Install Dependencies') {
           steps {
              script {
                     if (fileExists('package.json')) {
-                        sh 'npm install'
-                       sh 'npx cypress install'                        
-                       // sh 'npm install -g cypress'
-
+                        sh 'npm init -y'
+                        sh 'npm install cypress --save-dev'   
                     } else {
                         error "Arquivo package.json não encontrado!"
                     }
