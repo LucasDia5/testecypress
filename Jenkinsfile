@@ -14,7 +14,8 @@ pipeline {
              script {
                     if (fileExists('package.json')) {
                         sh 'npm init -y'
-                        sh 'npm install cypress --save-dev'   
+                        sh 'npm install cypress --save-dev'
+                        sh 'npm config set registry http://registry.npmjs.org/'
                     } else {
                         error "Arquivo package.json não encontrado!"
                     }
