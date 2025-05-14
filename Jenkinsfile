@@ -15,7 +15,7 @@ pipeline {
                     if (fileExists('package.json')) {
                         sh 'npm init -y'
                         sh 'npm install cypress --save-dev'
-                        sh 'npm config set registry http://registry.npmjs.org/'
+                        sh 'npm config set strict-ssl false'
                     } else {
                         error "Arquivo package.json não encontrado!"
                     }
@@ -41,5 +41,12 @@ pipeline {
                 ])
             }
         }
+    stage('dependence') {
+            steps {
+                 sh 'npm config set strict-ssl true'
+            }
+        } 
+
+        
      }
 }
