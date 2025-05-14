@@ -14,8 +14,8 @@ pipeline {
              script {
                     if (fileExists('package.json')) {
                         sh 'npm init -y'
+                        sh 'npm config set cafile "/home/lucas/Downloads.crt"'
                         sh 'npm install cypress --save-dev'
-                        sh 'npm config set strict-ssl false'
                     } else {
                         error "Arquivo package.json não encontrado!"
                     }
@@ -40,13 +40,6 @@ pipeline {
                     reportName: 'Cypress Test Report'
                 ])
             }
-        }
-    stage('dependence') {
-            steps {
-                 sh 'npm config set strict-ssl true'
-            }
-        } 
-
-        
+        }      
      }
 }
