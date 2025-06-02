@@ -11,16 +11,9 @@ pipeline {
        
     stage('Install Dependencies') {
           steps {
-             script {
-                    if (fileExists('package.json')) {
-                        sh 'npm init -y'
-                        //sh 'npm config set caf
-                        sh 'npm config set strict-ssl false'
-                        sh 'npm install cypress --save-dev'
-                    } else {
-                        error "Arquivo package.json não encontrado!"
-                    }
-                }
+            sh 'npm init -y'
+            sh 'npm config set strict-ssl false'
+            sh 'npm install cypress --save-dev'
             }
         }
         
