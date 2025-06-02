@@ -12,7 +12,7 @@ pipeline {
     stage('Install Dependencies') {
           steps {
             sh 'npm init -y'
-            sh 'npm config set strict-ssl false'
+            //sh 'npm config set strict-ssl false'
             sh 'npm install cypress --save-dev'
             }
         }
